@@ -1,15 +1,20 @@
-name: Keep the versions up-to-date
+name: Release
 
 on:
   release:
-    types: [published]
+    types:
+      - created
+      - published
+      - edited
+      - released
 
 jobs:
-  actions-tagger:
-    runs-on: windows-latest
+
+  release:
+    runs-on: ubuntu-18.04
+
     steps:
-      - uses: Actions-R-Us/actions-tagger@latest
-        with:
-          publish_latest: true
-        env:
-          GITHUB_TOKEN: '${{secrets.GITHUB_TOKEN}}'
+
+      - name: Dump github context
+        run: |
+          ECHO "Hello World"
